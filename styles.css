@@ -1,0 +1,1249 @@
+:root {
+    /* Variables reutilizables para mantener una apariencia visual coherente. */
+    /* Colores principales de la marca y del contenido; se reutilizan con var(--nombre). */
+    --color-brown-dark:    #694935;
+    --color-brown-mid:     #3f2a1e;
+    --color-brown-light:   #8c6642;
+    --color-terracotta:    #c17a4a;
+    --color-cream:         #f9f0e1;
+    --color-white:         #ffffff;
+    --color-green:         #2e7d32;
+    --color-text-body:     #444444;
+
+
+    /* Familias tipográficas: títulos, texto decorativo y texto normal. */
+    --font-display:  'Playfair Display', Georgia, serif;
+    --font-script:   'Great Vibes', cursive;
+    --font-body:     'Montserrat', 'Helvetica Neue', sans-serif;
+    --font-system:   'Lucida Sans', 'Lucida Grande', Geneva, Verdana, sans-serif;
+
+
+    /* Espacios reutilizables entre elementos y secciones. */
+    /* 1rem equivale al tamaño base de letra del navegador. */
+    --gap-sm:   1rem;
+    --gap-md:   2rem;
+    --gap-lg:   3rem;
+    --gap-xl:   5rem;
+
+
+    /* Radios para redondear botones, tarjetas y contenedores. */
+    /* Los valores en px definen cuánto se redondean las esquinas. */
+    --radius-sm:   10px;
+    --radius-md:   16px;
+    --radius-lg:   20px;
+    --radius-pill: 45px;
+
+
+    /* Sombras para tarjetas normales y para el estado hover. */
+    /* En una sombra: desplazamiento horizontal, vertical, desenfoque y color/transparencia. */
+    --shadow-card:  0 10px 30px rgba(0, 0, 0, 0.10);
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+
+    /* La transición dura 0.4 segundos y usa una aceleración suave. */
+    --transition: 0.4s ease;
+}
+
+
+
+
+
+
+/* Incluye también los pseudo-elementos en el reinicio global de estilos. */
+*,
+*::before,
+*::after {
+    /* Elimina márgenes y rellenos predeterminados del navegador. */
+    margin: 0;
+    padding: 0;
+    /* El ancho y alto incluyen también padding y borde del elemento. */
+    box-sizing: border-box;
+   
+}
+
+
+html {
+    /* Hace suave el desplazamiento al pulsar los enlaces del menú. */
+    scroll-behavior: smooth;
+}
+
+
+body {
+    /* Estilos generales aplicados a todo el documento. */
+    font-family: var(--font-body);
+    /* Color visible en las zonas del body que no tienen otro fondo. */
+    background-color: #087c00b2;
+    color: var(--color-text-body);
+    /* Multiplica el tamaño de letra por 1.7 para mejorar la lectura. */
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+img {
+    /* Evita que las imágenes superen el ancho de su contenedor. */
+    display: block;
+    max-width: 100%;
+}
+
+
+a {
+    /* Quita el subrayado y permite animar el color de los enlaces. */
+    text-decoration: none;
+    color: inherit;
+    /* El cambio de color al pasar el cursor ocurre gradualmente. */
+    transition: color 0.3s ease;
+}
+
+
+a:hover {
+    color: rgba(121, 0, 0, 0.574);
+}
+
+.es { display: none; }
+.en { display: inline; }
+
+/* Barra superior de navegación. */
+.nav-box {
+    /* Flex coloca los elementos del encabezado en una fila y los distribuye. */
+    /* Fondo claro que contrasta con el resto de la página. */
+    background-color: var(--color-cream);
+    /* Altura fija del encabezado en pantallas grandes. */
+    height: 100px;
+    /* Redondea solo las dos esquinas superiores. */
+    border-radius: var(--radius-pill) var(--radius-pill) 0 0;
+    display: flex;
+    /* Reparte el espacio sobrante de forma uniforme entre los elementos. */
+    justify-content: space-evenly;
+    /* Centra los elementos verticalmente dentro de los 100px. */
+    align-items: center;
+    /* 20px de separación a izquierda y derecha; 0 arriba y abajo. */
+    padding: 0 20px;
+}
+
+
+/* Agrupa el logotipo y el nombre de la marca. */
+.box-left {
+    /* Flex coloca el logotipo y el nombre uno junto al otro. */
+    display: flex;
+    align-items: center;
+    /* Separación horizontal entre la imagen y el texto de marca. */
+    gap: 10px;
+}
+
+
+.icon1 {
+    /* Controla el tamaño del logotipo del encabezado. */
+    height: 80px;
+}
+
+
+.text1 {
+    /* Estilo del nombre principal de la marca. */
+    font-family: var(--font-system);
+    font-size: 1.1rem;
+}
+
+
+.text2 {
+    /* Estilo manuscrito para la segunda parte del nombre. */
+    font-family: var(--font-script);
+    font-size: 2rem;
+}
+
+
+/* Distribuye horizontalmente los enlaces y controles de la derecha. */
+.box-right {
+    display: flex;
+    align-items: center;
+    /* 40px de espacio entre cada enlace, botón y selector. */
+    gap: 40px;
+    font-size: 1.06rem;
+}
+
+
+.box-right a {
+    /* Mantiene los enlaces del menú en color negro. */
+    color: black;
+}
+
+
+/* Coloca el icono de WhatsApp sobre el botón de contacto. */
+.whatsapp-contact {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+.whatsapp-contact a {
+    /* El relleno izquierdo deja espacio para el icono superpuesto. */
+    background-color: var(--color-green);
+    /* Texto blanco para que contraste con el botón verde. */
+    color: white;
+    padding: 10px 10px 10px 40px;
+    border-radius: var(--radius-sm);
+    /* Flex permite alinear el texto del botón con su contenido. */
+    display: flex;
+    /* Ancho uniforme para que el botón conserve su forma. */
+    width: 150px;
+    transition: background-color var(--transition);
+}
+
+
+.whatsapp-contact a:hover {
+    background-color: #1b5e20;
+    color: white;
+}
+
+
+.icon2 {
+    /* position absolute permite ubicar el icono dentro del botón. */
+    height: 36px;
+    position: absolute;
+    /* Sitúa el icono a 8px del borde izquierdo del contenedor relativo. */
+    left: 8px;
+    /* Coloca el icono por encima del fondo del botón. */
+    z-index: 1;
+    /* El icono no bloquea los clics que deben llegar al enlace. */
+    pointer-events: none;
+}
+
+
+
+
+
+
+/* El checkbox queda oculto; su estado controla el menú móvil con CSS. */
+.hamburger-toggle {
+    display: none;
+}
+
+
+/* Botón de tres líneas que solo aparece en pantallas pequeñas. */
+.hamburger {
+    display: none;          
+    /* Apila las tres líneas verticalmente. */
+    flex-direction: column;
+    /* Espacio entre las líneas del botón. */
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+}
+
+
+.hamburger span {
+    /* Cada span representa una línea del icono hamburguesa. */
+    display: block;
+    /* Ancho y alto de cada línea del icono. */
+    width: 26px;
+    height: 3px;
+    background-color: var(--color-brown-mid);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+
+/* Las siguientes reglas transforman las líneas en una X cuando el menú está abierto. */
+.hamburger-toggle:checked + .hamburger span:nth-child(1) {
+    /* Mueve y gira la primera línea para formar una diagonal. */
+    transform: translateY(8px) rotate(45deg);
+}
+
+
+.hamburger-toggle:checked + .hamburger span:nth-child(2) {
+    /* Oculta la línea central para convertir el icono en una X. */
+    opacity: 0;
+}
+
+
+.hamburger-toggle:checked + .hamburger span:nth-child(3) {
+    /* Mueve y gira la tercera línea en sentido contrario. */
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+
+
+
+
+/* Portada con imagen de fondo y texto superpuesto en el centro. */
+.hero-wrapper {
+    /* Sirve como referencia para posicionar el texto de la portada. */
+    position: relative;
+    /* Recorta cualquier imagen o zoom que sobresalga del contenedor. */
+    overflow: hidden;
+}
+
+
+.imagen2 {
+    /* object-fit cover llena el área sin deformar la imagen. */
+    /* La imagen ocupa todo el ancho disponible. */
+    width: 100%;
+    /* Altura visual de la portada en escritorio. */
+    height: 600px;
+    object-fit: cover;
+    display: block;
+    /* Oscurece la imagen para que el texto blanco sea legible. */
+    filter: brightness(0.4);
+}
+
+
+/* Centra vertical y horizontalmente el contenido de la portada. */
+.Box-Container1 {
+    position: absolute;
+    /* Lleva el centro del contenido al 50% del alto de la portada. */
+    top: 50%;
+    /* Lleva el centro del contenido al 50% del ancho de la portada. */
+    left: 50%;
+    /* Corrige la posición usando la mitad del propio ancho y alto. */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* Evita que el texto toque los extremos de la pantalla. */
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Separa verticalmente título, descripción, botón y ubicación. */
+    gap: 16px;
+}
+
+
+.text3 {
+    /* Título principal de la portada. */
+    font-family: var(--font-display);
+    color: white;
+    font-size: 4rem;
+}
+
+
+.text4 {
+    /* Palabra destacada de la portada con una fuente decorativa. */
+    font-family: var(--font-script);
+    font-size: 5rem;
+    color: rgb(133, 55, 0);
+}
+
+
+.text5 {
+    /* Frase que resume la propuesta del emprendimiento. */
+    color: rgb(255, 245, 98);
+    /* Tamaño destacado para la frase descriptiva de la portada. */
+    font-size: 2rem;
+}
+
+
+.text6 {
+    /* Ubicación física presentada en la portada. */
+    color: white;
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+
+.whatsapp-contact2 {
+    /* Botón principal de contacto sobre la imagen de portada. */
+    background-color: var(--color-green);
+    color: white;
+    display: inline-flex;
+    padding: 10px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    transition: background-color var(--transition);
+}
+
+
+.whatsapp-contact2:hover {
+    background-color: #1b5e20;
+    color: white;
+}
+
+
+
+
+/* Fondo y separación vertical de las secciones principales. */
+.Box-Container2 {
+    /* padding separa el contenido de los bordes y gap separa sus secciones. */
+    background-color: var(--color-cream);
+    /* 80px arriba, 5% a los lados y 100px abajo. */
+    padding: 80px 5% 100px;
+    display: flex;
+    /* Coloca las secciones una debajo de otra. */
+    flex-direction: column;
+    gap: 80px;
+}
+
+
+
+
+
+
+/* Presentación en dos columnas: imagen a la izquierda y texto a la derecha. */
+.Box-Container3 {
+    /* grid-template-columns crea dos columnas del mismo tamaño. */
+    /* Evita que la sección sea demasiado ancha en monitores grandes. */
+    max-width: 1300px;
+    width: 100%;
+    /* auto centra el bloque horizontalmente. */
+    margin: 0 auto;
+    display: grid;
+    /* Dos columnas iguales: una para imagen y otra para texto. */
+    grid-template-columns: 1fr 1fr;
+    /* Separación amplia entre ambas columnas. */
+    gap: var(--gap-xl);
+    align-items: center;
+}
+
+
+.Section1 {
+    position: relative;
+}
+
+
+.imagen3 {
+    /* Imagen de la sección Nosotros con recorte y sombra decorativa. */
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s ease;
+}
+
+
+.imagen3:hover {
+    /* Amplía ligeramente la imagen al pasar el cursor. */
+    transform: scale(1.02);
+}
+
+
+.Section2 {
+    /* Alinea el texto descriptivo hacia la izquierda. */
+    text-align: left;
+}
+
+
+.Text-container {
+    /* Limita la anchura del texto para facilitar su lectura. */
+    max-width: 550px;
+}
+
+
+.text7 {
+    /* Etiqueta pequeña que introduce la sección. */
+    color: var(--color-terracotta);
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+
+.text8 {
+    /* Título grande de la sección de historia. */
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    line-height: 1.1;
+    color: var(--color-brown-mid);
+    margin-bottom: 1.5rem;
+}
+
+
+.text9 {
+    /* Párrafo principal de la historia y las raíces familiares. */
+    font-size: 1.12rem;
+    line-height: 1.85;
+    color: var(--color-text-body);
+    font-weight: 400;
+}
+
+
+
+
+/* Encabezado y catálogo de productos. */
+.Box-Container4 {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.text10 {
+    /* Títulos compartidos por productos, video y valores. */
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-brown-mid);
+}
+
+
+.text11 {
+    /* Subtítulos que complementan los títulos principales. */
+    font-size: 1.4rem;
+    color: var(--color-brown-light);
+    margin-bottom: 3.5rem;
+    font-weight: 500;
+}
+
+
+/* Crea una cuadrícula flexible que se ajusta al espacio disponible. */
+.Products-container {
+    display: grid;
+    /* repeat crea columnas repetidas; auto-fit agrega las que quepan. */
+    /* Cada tarjeta mide al menos 260px y puede crecer hasta ocupar 1fr. */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* Espacio uniforme entre filas y columnas de productos. */
+    gap: var(--gap-md);
+}
+
+
+/* Apariencia común de las tarjetas de producto y su sombra. */
+.Products1,
+.Products2 {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    /* Recorta el zoom de la imagen para que permanezca dentro de la tarjeta. */
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    /* Anima simultáneamente el movimiento y la sombra al usar hover. */
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+
+/* Eleva la tarjeta y aumenta su sombra al pasar el cursor. */
+.Products1:hover,
+.Products2:hover {
+    /* Eleva la tarjeta 12px sin cambiar el espacio que ocupa en la cuadrícula. */
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-hover);
+}
+
+
+.imagen4 {
+    /* Todas las imágenes de producto conservan la misma altura visual. */
+    /* Hace que la imagen se adapte al ancho de la tarjeta. */
+    width: 100%;
+    /* Todas las imágenes tienen una altura uniforme. */
+    height: 240px;
+    object-fit: contain;
+    object-position: center;
+    background-color: #f5f5f5;
+    transition: transform 0.5s ease;
+}
+
+
+.Products1:hover .imagen4,
+.Products2:hover .imagen4 {
+    /* La imagen crece dentro de la tarjeta sin desbordarse. */
+    transform: scale(1.07);
+}
+
+
+.Products1 h3,
+.Products2 h3 {
+    /* Da a los nombres de producto una jerarquía visual de título. */
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    margin: 1.2rem 1.2rem 0.7rem;
+    color: var(--color-brown-mid);
+    text-align: center;
+}
+
+
+.Products1 p,
+.Products2 p {
+    /* Espaciado y tamaño del texto descriptivo de cada tarjeta. */
+    padding: 0 1.2rem 1.6rem;
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.98rem;
+    text-align: center;
+}
+
+
+
+
+/* Estilos para las tarjetas clicables y la galería. */
+.clickable-item { cursor: pointer; }
+
+.gallery-carousel {
+    position: relative;
+    margin-top: 1rem;
+    padding: 0 32px;
+}
+
+.gallery-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 24%;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.8rem;
+    scrollbar-width: none;
+}
+
+.gallery-track::-webkit-scrollbar { display: none; }
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    scroll-snap-align: start;
+    min-width: 240px;
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-color: #f5f5f5;
+    transition: transform var(--transition);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.18) 70%, transparent 100%);
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.gallery-overlay .title {
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,.45);
+}
+
+.gallery-overlay .description {
+    color: var(--color-white);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,.5);
+}
+
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,.92);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    z-index: 2;
+    font-size: 1.1rem;
+    color: var(--color-brown-mid);
+}
+
+.gallery-arrow--prev { left: 0; }
+.gallery-arrow--next { right: 0; }
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,.8);
+    backdrop-filter: blur(6px);
+}
+
+.modal-content {
+    position: relative;
+    width: min(620px, 100%);
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-hover);
+    animation: modalFadeIn 0.25s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0,0,0,.65);
+    color: white;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+#modal-img {
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    object-position: center;
+    background-color: #f5f5f5;
+}
+
+.modal-text {
+    padding: 1.2rem 1.4rem 1.4rem;
+}
+
+.modal-text h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--color-brown-mid);
+    margin-bottom: 0.5rem;
+}
+
+.modal-text p {
+    color: var(--color-text-body);
+    line-height: 1.7;
+}
+
+/* Bloque visual donde se presentan los valores de la empresa. */
+.Values-container {
+    /* cover permite preparar el bloque para un fondo visual sin deformarlo. */
+    background-color: var(--color-cream);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    width: 100%;
+    padding: 60px 40px;
+    border-radius: var(--radius-md);
+}
+
+
+.Values-container .text10 {
+    /* Reafirma el color del título dentro de la sección de valores. */
+    color: var(--color-brown-mid);
+}
+
+
+.Values-container .text11 {
+    color: var(--color-text-body);
+    margin-bottom: 2.5rem;
+}
+
+
+/* Organiza los cuatro valores en columnas. */
+.Values-container2 {
+    display: grid;
+    /* En escritorio se muestran cuatro valores en una sola fila. */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: var(--gap-md);
+}
+
+
+/* Tarjeta individual de cada valor. */
+.Value {
+    /* Flex centra verticalmente el icono, título y descripción. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Separa icono, título y texto dentro de cada tarjeta. */
+    gap: 10px;
+    /* Espacio interno para que el contenido no toque el borde. */
+    padding: 10px;
+    border: 1px solid rgba(193, 122, 74, 0.25);
+    border-radius: var(--radius-md);
+    background-color: rgba(0, 0, 0, 0.007);
+    /* Suaviza ligeramente lo que pueda verse detrás de la tarjeta. */
+    backdrop-filter: blur(2px);
+    transition: border-color var(--transition), background-color var(--transition);
+}
+
+
+.Value:hover {
+    /* Destaca el valor seleccionado mediante borde y fondo. */
+    border: 1px solid var(--color-brown-dark);
+    background-color: rgba(193, 122, 74, 0.15);
+}
+
+
+.images5 {
+    /* Ajusta el tamaño y el color visual de los iconos de valores. */
+    height: 50px;
+    filter: brightness(0) invert(0.2) sepia(1) hue-rotate(350deg) saturate(0.7);
+   
+}
+
+
+.Value h3 {
+    /* Título de cada valor de la empresa. */
+    font-family: var(--color-brown-mid);
+    font-size: 1.3rem;
+    color: var(--color-brown-dark);
+    font-weight: 400;
+}
+
+
+.Value p {
+    /* Descripción breve de cada valor. */
+    font-size: 0.95rem;
+    color: var(--color-brown-mid);
+    line-height: 1.6;
+}
+
+
+
+
+
+
+/* Área de contacto dividida en dos bloques informativos. */
+.Info-container {
+    /* Flex crea dos columnas de contacto en pantallas grandes. */
+    display: flex;
+    /* Separa los dos paneles blancos de información. */
+    gap: 50px;
+    width: 100%;
+    padding: 60px 40px;
+    border-radius: var(--radius-md);
+}
+
+
+.Info-container1,
+.Info-container2 {
+    /* Ambos paneles comparten fondo, bordes redondeados y relleno. */
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    /* Ambos paneles crecen por igual y comparten el ancho disponible. */
+    flex: 1;
+}
+
+
+.Info-container1 p,
+.Info-container2 p {
+    /* Etiquetas como CONTACT, WhatsApp y Location. */
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--color-terracotta);
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+
+.Info-container1 h1,
+.Info-container2 h1 {
+    /* Destaca el mensaje y el número telefónico. */
+    font-family: var(--font-display);
+    color: var(--color-brown-mid);
+    margin-bottom: 0.75rem;
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+
+.Info-container1 h3,
+.Info-container2 h2 {
+    /* Texto secundario y dirección física. */
+    font-family: var(--font-body);
+    color: var(--color-text-body);
+    line-height: 1.6;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+
+
+
+
+
+/* Contenedor del video centrado y limitado a un ancho legible. */
+.Video-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* Mantiene la proporción 16:9 del video en cualquier tamaño de pantalla. */
+.video-wrapper {
+    /* La combinación height: 0 y padding-bottom mantiene la proporción del video. */
+    position: relative;
+    /* 56.25% equivale a una proporción 16:9: 9 dividido entre 16. */
+    padding-bottom: 56.25%;
+    height: 0;
+    /* Oculta cualquier parte del video que salga de sus bordes redondeados. */
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    margin-top: 2rem;
+}
+
+
+.video-wrapper iframe,
+.video-wrapper video {
+    /* El video ocupa todo el espacio reservado por video-wrapper. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+
+
+/* Estilo del control que cambia el idioma. */
+.lang-toggle {
+    background: transparent;
+    border: 2px solid var(--color-brown-mid);
+    color: var(--color-brown-mid);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+    flex-shrink: 0;
+}
+
+
+.lang-toggle:hover {
+    background-color: var(--color-brown-mid);
+    color: var(--color-cream);
+}
+
+
+
+
+/* Oculta el interruptor real y usa la etiqueta como botón visible. */
+.lang-checkbox {
+    /* El checkbox no se ve; la etiqueta asociada funciona como botón. */
+    display: none;
+}
+
+
+/* Por defecto se muestra el texto en inglés y se oculta el texto en español. */
+.es { display: none; }
+.en { display: inline; }
+
+
+/* Estas clases se repiten en todos los textos que tienen traducción. */
+
+
+/* Cuando el interruptor está marcado, se muestra español en toda la página. */
+.lang-checkbox:checked ~ * .es,
+.lang-checkbox:checked ~ header .es,
+.lang-checkbox:checked ~ main .es,
+.lang-checkbox:checked ~ footer .es {
+    /* display inline vuelve visible el texto español seleccionado. */
+    display: inline;
+}
+
+
+/* Al mismo tiempo se oculta la versión inglesa. */
+.lang-checkbox:checked ~ * .en,
+.lang-checkbox:checked ~ header .en,
+.lang-checkbox:checked ~ main .en,
+.lang-checkbox:checked ~ footer .en {
+    /* display none evita que se vean simultáneamente ambos idiomas. */
+    display: none;
+}
+
+
+.lang-toggle {
+    background: transparent;
+    border: 2px solid var(--color-brown-mid);
+    color: var(--color-brown-mid);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+    flex-shrink: 0;
+    user-select: none;
+}
+
+
+.lang-toggle:hover {
+    background-color: var(--color-brown-mid);
+    color: var(--color-cream);
+}
+
+
+/* Estilos del pie de página. */
+.footer-nav {
+    background-color: var(--color-brown-dark);
+    min-height: 80px;
+    color: rgba(249, 240, 225, 0.5);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+}
+
+
+
+
+
+
+/* Ajustes para tabletas y pantallas medianas. */
+@media (max-width: 1024px) {
+    /* Reduce tamaños y separaciones para que el contenido quepa en tabletas. */
+
+
+    .box-right {
+        /* Reduce la separación del menú para evitar desbordamientos. */
+        gap: 24px;
+        font-size: 0.95rem;
+    }
+
+
+    .text3  { font-size: 3rem; }
+    /* Reduce progresivamente los títulos antes de llegar al tamaño móvil. */
+    .text4  { font-size: 4rem; }
+    .text5  { font-size: 1.6rem; }
+    .text8  { font-size: 2.2rem; }
+    .text10 { font-size: 2.6rem; }
+
+
+    .Box-Container3 {
+        gap: var(--gap-lg);
+    }
+
+
+    .Values-container2 {
+        /* Reduce la separación entre los valores en pantallas medianas. */
+        gap: 30px;
+    }
+
+    .gallery-track {
+        grid-auto-columns: 32%;
+    }
+}
+
+
+
+
+/* En pantallas pequeñas se activa el menú hamburguesa y se apilan las columnas. */
+@media (max-width: 768px) {
+    /* Cambia la navegación a un menú desplegable y apila el contenido. */
+
+
+ 
+    .nav-box {
+        height: auto;
+        padding: 14px 20px;
+        /* Permite que el menú ocupe una segunda fila cuando se abre. */
+        flex-wrap: wrap;
+        justify-content: space-between;
+        border-radius: 20px 20px 0 0;
+    }
+
+
+    .box-left { flex: 1; }
+    .icon1    { height: 60px; }
+    .text1    { font-size: 1rem; }
+    .text2    { font-size: 1.6rem; }
+
+
+    .hamburger {
+        /* El botón hamburguesa estaba oculto en escritorio y aquí se vuelve visible. */
+        display: flex;
+    }
+
+
+    .box-right {
+        /* El menú móvil se presenta verticalmente y ocupa todo el ancho. */
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        width: 100%;
+        padding: 16px 0 8px;
+        background-color: var(--color-cream);
+    }
+
+
+   
+    .hamburger-toggle:checked ~ .box-right {
+        /* Al marcar el checkbox, el menú oculto pasa a mostrarse. */
+        display: flex;
+    }
+
+
+    .whatsapp-contact a {
+        width: auto;
+        padding: 8px 16px 8px 44px;
+    }
+
+
+    .imagen2 { height: 420px; }
+    /* Disminuye la altura de la portada para que no ocupe toda la pantalla. */
+    .text3   { font-size: 2.2rem; }
+    .text4   { font-size: 3rem; }
+    .text5   { font-size: 1.3rem; }
+
+
+    .Box-Container3 {
+        /* Imagen e historia dejan de estar lado a lado y pasan a una columna. */
+        grid-template-columns: 1fr;
+        gap: var(--gap-md);
+    }
+
+
+    .imagen3 { height: 320px; }
+
+
+    .Text-container {
+        max-width: 100%;
+    }
+
+
+    .text8 { font-size: 2rem; }
+
+
+    .Values-container2 {
+        /* Los cuatro valores pasan a dos columnas en tabletas y celulares. */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+
+    .Info-container {
+        /* Los bloques de contacto se apilan para evitar que queden estrechos. */
+        flex-direction: column;
+        gap: 24px;
+        padding: 40px 24px;
+    }
+
+
+    .Box-Container2 {
+        /* Reduce el espacio vertical general en dispositivos pequeños. */
+        gap: 60px;
+        padding: 60px 5% 80px;
+    }
+
+
+    .Values-container {
+        padding: 50px 24px;
+    }
+
+    .gallery-track {
+        grid-auto-columns: 48%;
+    }
+}
+
+
+
+
+/* Ajustes adicionales para celulares. */
+@media (max-width: 480px) {
+    /* Reduce tipografías, imágenes y espacios para celulares pequeños. */
+
+
+    .nav-box  { border-radius: 12px 12px 0 0; }
+    /* Las esquinas son menos redondeadas para aprovechar mejor el ancho del celular. */
+    .icon1    { height: 50px; }
+    .text1    { font-size: 0.85rem; }
+    .text2    { font-size: 1.3rem; }
+
+
+    .imagen2         { height: 360px; }
+    .text3           { font-size: 1.7rem; }
+    /* Todos los textos de la portada se reducen para evitar desbordamiento horizontal. */
+    .text4           { font-size: 2.4rem; }
+    .text5           { font-size: 1.1rem; }
+    .text6           { font-size: 0.8rem; }
+    .whatsapp-contact2 { font-size: 0.9rem; padding: 9px 18px; }
+
+
+    .Box-Container2 {
+        padding: 40px 4% 60px;
+        gap: 50px;
+    }
+
+
+    .text10 { font-size: 2rem; }
+    .text11 { font-size: 1.1rem; margin-bottom: 2rem; }
+    .text8  { font-size: 1.6rem; }
+    .text9  { font-size: 1rem; }
+
+
+    .Products-container {
+        /* Cada producto ocupa todo el ancho disponible en el celular. */
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-track {
+        grid-auto-columns: 90%;
+    }
+
+
+    .Values-container2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+
+    .images5 { height: 40px; }
+
+
+    .Info-container {
+        flex-direction: column;
+        padding: 30px 16px;
+    }
+
+
+    .Info-container1 h1,
+    .Info-container2 h1 {
+        font-size: 1.4rem;
+    }
+}
+
+
+
+
+/* Ajustes para celulares muy pequeños. */
+@media (max-width: 360px) {
+    /* Último ajuste para dispositivos con una pantalla muy angosta. */
+
+
+    .text3 { font-size: 1.4rem; }
+    .text4 { font-size: 2rem; }
+    .text5 { font-size: 0.95rem; }
+
+
+    .Values-container2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+}
